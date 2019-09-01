@@ -24,6 +24,6 @@
   "homepage": "https://github.com/epessina/mhyconos-webgis#readme",
   "dependencies": {
     "jquery": "^3.4.1",
-    "ol": "^5.3.3"
+    "leaflet": "^1.5.1"
   }
 }

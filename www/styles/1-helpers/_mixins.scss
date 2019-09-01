@@ -1,0 +1,19 @@
+@mixin font($weight, $size) {
+  font : $weight $size system-ui;
+}
+
+@mixin flex-display($direction: row, $justify: flex-start) {
+  @include vendor("display", "flex");
+  @include vendor("flex-direction", "#{$direction}");
+  @include vendor("justify-content", "#{$justify}");
+}
+
+@mixin flex-center() {
+  @include vendor("display", "flex");
+  @include vendor("align-items", "center");
+  @include vendor("justify-content", "center");
+}
+
+@mixin flex-static-size($size) {
+  @include vendor("flex", "0 0 #{$size}");
+}

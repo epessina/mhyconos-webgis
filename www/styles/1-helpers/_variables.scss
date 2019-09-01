@@ -1,0 +1,54 @@
+// COLORS
+$color-main : #009688;
+$color-main-dark : #00796B;
+$color-text : #000000;
+$color-placeholder : #E9EAEE;
+$color-text-ph : #757575;
+
+
+// FONT SIZES
+$font-title : 20px;
+$font-body : 16px;
+$font-body-small : 14px;
+
+
+// Z-INDEXES
+$z-splash : 100000;
+$z-alert-overlay : 10000;
+$z-img-screen : 10000;
+$z-auth : 1101;
+$z-profile : 1100;
+$z-account-settings : 1101;
+$z-change-pw : 1101;
+$z-map-container : 1000;
+$z-info-wrapper : 1000;
+$z-insert-wrapper : 1100;
+$z-insert-main : 0;
+$z-top-bar : 1;
+$z-opaque-overlay : 4;
+$z-full-dialog : 3;
+$z-dialog : 5;
+$z-photo-cancel : 4;
+
+
+// CONTAINER
+$container-margin : 16px;
+@function container-size($margin) {
+  @return calc(100% - #{$margin} * 2)
+}
+
+// FAB
+$fab-size : 52px;
+$fab-radius : 50px;
+
+
+// ICONS
+$icon-area : 48px;
+$icon-size : 24px;
+$icon-padding : 12px;
+
+
+// TOP BAR
+$top-bar-height : 56px;
+$top-bar-icon-area : 52px;
+$top-bar-icon-margin : 4px;
