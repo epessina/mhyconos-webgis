@@ -1,0 +1,29 @@
+{
+  "name": "mhyconos-webgis",
+  "version": "1.0.0",
+  "description": "WebGIS built for visualizing the data of Project MHYCONOS.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epessina/mhyconos-webgis.git"
+  },
+  "keywords": [
+    "webgis",
+    "openlayers",
+    "geoserver",
+    "mhyconos"
+  ],
+  "author": "Edoardo Pessina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epessina/mhyconos-webgis/issues"
+  },
+  "homepage": "https://github.com/epessina/mhyconos-webgis#readme",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "ol": "^5.3.3"
+  }
+}
