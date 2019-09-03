@@ -1,5 +1,5 @@
 @mixin font($weight, $size) {
-  font : $weight $size system-ui;
+  font : $weight $size "Roboto";
 }
 
 @mixin flex-display($direction: row, $justify: flex-start) {

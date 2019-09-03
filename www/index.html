@@ -7,8 +7,14 @@
     <meta name="viewport"
           content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" type="text/css" href="../node_modules/leaflet/dist/leaflet.css">
+    <!-- OpenLayers -->
+    <link rel="stylesheet" href="styles/0-lib/ol.css" type="text/css"> <!-- v. 5.3.0 -->
+
+    <!-- Roboto font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="styles/index.css" type="text/css">
@@ -17,7 +23,325 @@
 
 </head>
 
-<body>
+<body style="background-color: #eeeeee">
+
+
+<div style="display: none" id="layers-trigger" class="menu-icon"><i class="material-icons">layers</i></div>
+
+<div id="layers-panel" class="open">
+
+    <div class="layers-panel-header">
+
+        <div class="panel-title">Layers</div>
+        <div id="layers-panel-close" class="close" ><i class="material-icons">close</i></div>
+
+    </div>
+
+    <div class="layers-container">
+
+        <!-- Structures group -->
+        <div class="layer-group-header" data-group="structures">
+
+            <div class="group-title">Structures</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="structures">
+
+            <div class="layer" data-layer="corpo_edificato" data-loaded="false">
+
+                <div class="layer-name">Buildings</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="localita_abitata" data-loaded="false">
+
+                <div class="layer-name">Populated areas</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="luogo_territoriale" data-loaded="false">
+
+                <div class="layer-name">Spatial locations</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Roads group -->
+        <div class="layer-group-header" data-group="structures">
+
+            <div class="group-title">Roads</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="structures">
+
+            <div class="layer" data-layer="elementi_stradali" data-loaded="false">
+
+                <div class="layer-name">Road elements</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="area_circolazione_veicolare" data-loaded="false">
+
+                <div class="layer-name">Vehicular circulation areas</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="sentieri" data-loaded="false">
+
+                <div class="layer-name">Paths</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Water group -->
+        <div class="layer-group-header" data-group="structures">
+
+            <div class="group-title">Water</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="structures">
+
+            <div class="layer" data-layer="specchio_acqua" data-loaded="false">
+
+                <div class="layer-name">Water bodies</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="invaso_artificiale" data-loaded="false">
+
+                <div class="layer-name">Artificial lake</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="area_bagnata_corso_acqua" data-loaded="false">
+
+                <div class="layer-name">Streams wet areas</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="bacini_idrografici" data-loaded="false">
+
+                <div class="layer-name">Drainage basins</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contour map -->
+        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+
+            <div class="layer-name">Contour map</div>
+
+            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+        </div>
+
+
+        <!-- Landslides collection group -->
+        <div class="layer-group-header" data-group="structures">
+
+            <div class="group-title">Landslides collection</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="structures">
+
+            <div class="layer" data-layer="punti_storici" data-loaded="false">
+
+                <div class="layer-name">Historic points</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="frane_poligonali" data-loaded="false">
+
+                <div class="layer-name">Polygonal landslides</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="frane_lineari" data-loaded="false">
+
+                <div class="layer-name">Linear landslides</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="aree_franosita_diffusa" data-loaded="false">
+
+                <div class="layer-name">Widespread landslides areas</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Val Tartano -->
+        <div class="layer single-layer" data-layer="val_tartano" data-loaded="true">
+
+            <div class="layer-name">Val Tartano</div>
+
+            <div class="layer-visibility" data-visible="true"><i class="material-icons">visibility</i></div>
+
+        </div>
+
+
+        <!-- Municipalities -->
+        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+
+            <div class="layer-name">Municipalities</div>
+
+            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+        </div>
+
+
+        <!-- Land use -->
+        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+
+            <div class="layer-name">Land use and cover</div>
+
+            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+        </div>
+
+
+        <!-- Geological map group -->
+        <div class="layer-group-header" data-group="structures">
+
+            <div class="group-title">Geological map</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="structures">
+
+            <div class="layer" data-layer="faglie" data-loaded="false">
+
+                <div class="layer-name">Fault lines</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+            <div class="layer" data-layer="geologia" data-loaded="false">
+
+                <div class="layer-name">Geology</div>
+
+                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div style="display: none" id="basemaps-trigger" class="menu-icon"><i class="material-icons">language</i></div>
+
+<div id="basemaps-menu">
+
+    <div class="basemaps-wrapper">
+
+        <label class="basemap-label">
+
+            <input class="basemap-input"
+                   type="radio"
+                   name="basemaps"
+                   value="osm"
+                   checked/>
+
+            <div class="basemap-preview">
+
+                <div class="basemap-image"></div>
+
+                <div class="basemap-name">OSM</div>
+
+            </div>
+
+        </label>
+
+        <label class="basemap-label">
+
+            <input class="basemap-input"
+                   type="radio"
+                   name="basemaps"
+                   value="aerial"/>
+
+            <div class="basemap-preview">
+
+                <div class="basemap-image"></div>
+
+                <div class="basemap-name">Bing Aerial</div>
+
+            </div>
+
+        </label>
+
+        <label class="basemap-label">
+
+            <input class="basemap-input"
+                   type="radio"
+                   name="basemaps"
+                   value="aerialLabel"/>
+
+            <div class="basemap-preview">
+
+                <div class="basemap-image"></div>
+
+                <div class="basemap-name">Bing Aerial with labels</div>
+
+            </div>
+
+        </label>
+
+    </div>
+
+</div>
+
+
+<div id="mouse-position"></div>
+
 
 <div id="map"></div>
 
@@ -25,11 +349,12 @@
 <!-- jQuery -->
 <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
 
-<!-- Leaflet -->
-<script type="text/javascript" src="../node_modules/leaflet/dist/leaflet.js"></script>
+<!-- OpenLayers -->
+<script type="text/javascript" src="scripts/0-lib/ol.js"></script> <!-- v. 5.3.0 -->
 
 <!-- Main js -->
-<script src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/settings.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
 
 </body>
 

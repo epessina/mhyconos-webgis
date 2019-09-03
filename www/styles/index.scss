@@ -1,9 +1,9 @@
 @import "1-helpers/variables";
 @import "1-helpers/vendor";
-@import "1-helpers/typography";
 @import "1-helpers/mixins";
 
 @import "2-base/normalize";
 @import "2-base/common";
 
 @import "3-layouts/map";
+@import "3-layouts/layers-panel";

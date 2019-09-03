@@ -1,51 +1,3 @@
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 300;
-  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: italic;
-  font-weight: 300;
-  src: local(".SFNSText-LightItalic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Light Italic"), local("Ubuntu Light Italic"), local("Roboto-LightItalic"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 400;
-  src: local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: italic;
-  font-weight: 400;
-  src: local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 500;
-  src: local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: italic;
-  font-weight: 500;
-  src: local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 700;
-  src: local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
-@font-face {
-  font-family: system-ui;
-  font-style: italic;
-  font-weight: 700;
-  src: local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
-}
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -237,12 +189,16 @@ body {
 }
 
 body {
-  font: 400 16px system-ui;
+  font: 400 18px "Roboto";
   line-height: 1.2;
-  overflow-y: hidden;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   color: #000000;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 a, button {
@@ -261,23 +217,378 @@ p {
   margin: 0;
 }
 
-.custom-container {
-  margin: 0 16px;
-  width: calc(100% - 16px * 2);
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background-image: -webkit-linear-gradient(left, #F0F0F0, #8C8B8B, #F0F0F0);
-  background-image: -moz-linear-gradient(left, #F0F0F0, #8C8B8B, #F0F0F0);
-  background-image: -ms-linear-gradient(left, #F0F0F0, #8C8B8B, #F0F0F0);
-  background-image: -o-linear-gradient(left, #F0F0F0, #8C8B8B, #F0F0F0);
-  margin-bottom: 25px;
-}
-
 #map {
   width: 100%;
+}
+#map .ol-attribution {
+  display: none;
+}
+
+#mouse-position {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+#scale-bar {
+  width: 75px;
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  z-index: 1;
+}
+
+.ol-scale-line {
+  bottom: 10px;
+  right: 16px;
+  left: auto;
+  background: rgba(1, 160, 196, 0.7);
+}
+
+.ol-zoom {
+  top: auto;
+  bottom: 38px;
+  right: 16px;
+  left: auto;
+}
+.ol-zoom button {
+  background: #01A0C4;
+}
+.ol-zoom button:hover {
+  background: #067C98;
+}
+.ol-zoom button:focus {
+  background: #067C98;
+}
+
+.menu-icon {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  background-color: #01A0C4;
+  color: #FFFFFF;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 1;
+  box-sizing: border-box;
+}
+.menu-icon:hover {
+  background-color: #067C98;
+}
+.menu-icon i {
+  padding: 12px;
+}
+
+#basemaps-trigger {
+  top: 90px;
+  right: 70px;
+}
+
+#basemaps-menu {
+  width: 380px;
+  visibility: hidden;
+  position: fixed;
+  top: 170px;
+  right: 40px;
+  z-index: 2;
+  background-color: #FFFFFF;
+  -moz-transition: opacity .2s 0s, visibility 0s .2s;
+  -webkit-transition: opacity .2s 0s, visibility 0s .2s;
+  -ms-transition: opacity .2s 0s, visibility 0s .2s;
+  transition: opacity .2s 0s, visibility 0s .2s;
+  opacity: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+#basemaps-menu:after, #basemaps-menu:before {
+  bottom: 100%;
+  left: 100%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+#basemaps-menu:after {
+  border-bottom-color: #FFFFFF;
+  border-width: 30px;
+  margin-left: -85px;
+}
+#basemaps-menu:before {
+  border-width: 36px;
+  margin-left: -36px;
+}
+#basemaps-menu.open {
+  visibility: visible;
+  -moz-transition: opacity .2s 0s, visibility .2s 0s;
+  -webkit-transition: opacity .2s 0s, visibility .2s 0s;
+  -ms-transition: opacity .2s 0s, visibility .2s 0s;
+  transition: opacity .2s 0s, visibility .2s 0s;
+  opacity: 1;
+}
+#basemaps-menu .basemaps-wrapper {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -moz-justify-content: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-justify-content: space-evenly;
+  justify-content: space-evenly;
+  padding: 30px 0 20px 0;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-preview {
+  width: 80px;
+  cursor: pointer;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-preview .basemap-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #B9B9B9;
+  margin-bottom: 16px;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-preview .basemap-name {
+  font: 400 16px "Roboto";
+  color: #5F5F5F;
+  text-align: center;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-input {
+  display: none;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-input:checked + .basemap-preview .basemap-image {
+  border: 3px solid #01B2D7;
+}
+#basemaps-menu .basemaps-wrapper .basemap-label .basemap-input:checked + .basemap-preview .basemap-name {
+  color: #01A0C4;
+}
+
+#layers-trigger {
+  top: 30px;
+  right: 70px;
+}
+
+#layers-panel {
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #01A0C4;
+  box-shadow: 3px 0 5px 0 #adadad;
+  -moz-transform: translateX(-400px);
+  -webkit-transform: translateX(-400px);
+  -ms-transform: translateX(-400px);
+  transform: translateX(-400px);
+  -moz-transition: -moz-transform 250ms ease-in-out;
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  -ms-transition: -ms-transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+  overflow-y: auto;
+}
+#layers-panel.open {
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+#layers-panel .layers-panel-header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: columns;
+  -webkit-flex-direction: columns;
+  -ms-flex-direction: columns;
+  flex-direction: columns;
+  -moz-justify-content: -moz-flex-start;
+  -webkit-justify-content: -webkit-flex-start;
+  -ms-justify-content: -ms-flex-start;
+  justify-content: flex-start;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 0 20px 0 30px;
+  background-color: #067C98;
+  color: #FFFFFF;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: columns;
+  -webkit-flex-direction: columns;
+  -ms-flex-direction: columns;
+  flex-direction: columns;
+  -moz-justify-content: -moz-flex-start;
+  -webkit-justify-content: -webkit-flex-start;
+  -ms-justify-content: -ms-flex-start;
+  justify-content: flex-start;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+#layers-panel .layers-panel-header .close {
+  -moz-flex: 0 0 48px;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+  cursor: pointer;
+}
+#layers-panel .layers-panel-header .close i {
+  padding: 12px;
+}
+#layers-panel .layers-panel-header .close i:hover {
+  color: #EBEBEB;
+}
+#layers-panel .layers-panel-header .panel-title {
+  font: 500 25px "Roboto";
+  -moz-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 2;
+}
+#layers-panel .layers-container {
+  width: 100%;
+  padding-top: 60px;
+}
+#layers-panel .layers-container .layer-group-header {
+  width: 100%;
+  height: 52px;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: columns;
+  -webkit-flex-direction: columns;
+  -ms-flex-direction: columns;
+  flex-direction: columns;
+  -moz-justify-content: -moz-flex-start;
+  -webkit-justify-content: -webkit-flex-start;
+  -ms-justify-content: -ms-flex-start;
+  justify-content: flex-start;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 0 50px 0 30px;
+  background-color: #01A0C4;
+  color: #FFFFFF;
+  cursor: pointer;
+  border-bottom: 1px solid #FFFFFF;
+}
+#layers-panel .layers-container .layer-group-header:hover {
+  box-shadow: inset 2px 0 0 #FFFFFF;
+}
+#layers-panel .layers-container .layer-group-header.open {
+  border-bottom: none;
+}
+#layers-panel .layers-container .layer-group-header.open > .group-toggle i {
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+#layers-panel .layers-container .layer-group-header .group-title {
+  font: 400 18px "Roboto";
+  -moz-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 1;
+}
+#layers-panel .layers-container .layer-group-header .group-toggle {
+  -moz-flex: 0 0 48px;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+#layers-panel .layers-container .layer-group-header .group-toggle i {
+  padding: 12px;
+  -moz-transition: -moz-transform 0.3s ease;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -ms-transition: -ms-transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+#layers-panel .layers-container .layer-group-content {
+  display: none;
+}
+#layers-panel .layers-container .layer {
+  width: 100%;
+  height: 52px;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: columns;
+  -webkit-flex-direction: columns;
+  -ms-flex-direction: columns;
+  flex-direction: columns;
+  -moz-justify-content: -moz-flex-start;
+  -webkit-justify-content: -webkit-flex-start;
+  -ms-justify-content: -ms-flex-start;
+  justify-content: flex-start;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 0 50px 0 30px;
+  background-color: #01B2D7;
+  color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  cursor: pointer;
+}
+#layers-panel .layers-container .layer:hover {
+  box-shadow: inset 2px 0 0 #FFFFFF;
+}
+#layers-panel .layers-container .layer.single-layer {
+  background-color: #01A0C4;
+}
+#layers-panel .layers-container .layer .layer-name {
+  font: 400 18px "Roboto";
+  -moz-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 1;
+}
+#layers-panel .layers-container .layer .layer-visibility {
+  -moz-flex: 0 0 48px;
+  -webkit-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+}
+#layers-panel .layers-container .layer .layer-visibility i {
+  padding: 12px;
 }
 
 /*# sourceMappingURL=index.css.map */

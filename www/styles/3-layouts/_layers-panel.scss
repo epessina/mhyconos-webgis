@@ -1,0 +1,242 @@
+.menu-icon {
+  width            : 48px;
+  height           : 48px;
+  position         : absolute;
+  background-color : $color-main;
+  color            : #FFFFFF;
+  cursor           : pointer;
+  border-radius    : 8px;
+  z-index          : 1;
+  box-sizing       : border-box;
+
+  &:hover { background-color : $color-main-dark}
+
+  i { padding : 12px }
+
+}
+
+
+#basemaps-trigger {
+  top   : 90px;
+  right : 70px;
+}
+
+#basemaps-menu {
+  width            : 380px;
+  visibility       : hidden;
+  position         : fixed;
+  top              : 170px;
+  right            : 40px;
+  z-index          : 2;
+  background-color : #FFFFFF;
+  @include vendor("transition", ("opacity .2s 0s, visibility 0s .2s"));
+  opacity          : 0;
+  box-shadow       : 0 4px 12px rgba(0, 0, 0, .1);
+  border-radius    : 8px;
+
+  &:after, &:before {
+    bottom         : 100%;
+    left           : 100%;
+    border         : solid transparent;
+    content        : "";
+    height         : 0;
+    width          : 0;
+    position       : absolute;
+    pointer-events : none;
+  }
+
+  &:after {
+    border-bottom-color : #FFFFFF;
+    border-width        : 30px;
+    margin-left         : -85px;
+  }
+
+  &:before {
+    border-width : 36px;
+    margin-left  : -36px;
+  }
+
+  &.open {
+    visibility : visible;
+    @include vendor("transition", ("opacity .2s 0s, visibility .2s 0s"));
+    opacity    : 1;
+  }
+
+  .basemaps-wrapper {
+    @include flex-display(row, space-evenly);
+    padding : 30px 0 20px 0;
+
+    .basemap-label {
+
+      .basemap-preview {
+        width  : 80px;
+        cursor : pointer;
+        @include vendor("display", "flex");
+        @include vendor("flex-direction", "column");
+        @include vendor("align-items", "center");
+
+        .basemap-image {
+          width            : 60px;
+          height           : 60px;
+          border-radius    : 8px;
+          background-color : #B9B9B9;
+          margin-bottom    : 16px;
+        }
+
+        .basemap-name {
+          @include font(400, $font-body-small);
+          color      : #5F5F5F;
+          text-align : center;
+        }
+
+      }
+
+      .basemap-input {
+        display : none;
+
+        &:checked {
+
+          & + .basemap-preview .basemap-image { border : 3px solid $color-main-light }
+
+          & + .basemap-preview .basemap-name { color : $color-main }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+#layers-trigger {
+  top   : 30px;
+  right : 70px;
+}
+
+#layers-panel {
+  width            : 400px;
+  height           : 100%;
+  position         : absolute;
+  top              : 0;
+  left             : 0;
+  z-index          : 2;
+  background-color : $color-main;
+  box-shadow       : 3px 0 5px 0 rgba(173, 173, 173, 1);
+  @include vendor("transform", "translateX(-400px)");
+  @include vendor("transition", ("transform 250ms ease-in-out"));
+  overflow-y       : auto;
+
+  &.open { @include vendor("transform", "translateX(0)") }
+
+  .layers-panel-header {
+    width            : 100%;
+    height           : 60px;
+    position         : fixed;
+    top              : 0;
+    left             : 0;
+    @include flex-display(columns);
+    @include vendor("align-items", "center");
+    padding          : 0 20px 0 30px;
+    background-color : $color-main-dark;
+    color            : #FFFFFF;
+    @include flex-display(columns);
+    @include vendor("align-items", "center");
+
+    .close {
+      @include flex-static-size(48px);
+      cursor : pointer;
+
+      i {
+        padding : 12px;
+
+        &:hover { color : #EBEBEB }
+
+      }
+
+    }
+
+    .panel-title {
+      @include font(500, 25px);
+      @include vendor("flex", "1");
+      line-height : 2;
+    }
+
+  }
+
+  .layers-container {
+    width       : 100%;
+    padding-top : 60px;
+
+    .layer-group-header {
+      width            : 100%;
+      height           : 52px;
+      @include flex-display(columns);
+      @include vendor("align-items", "center");
+      padding          : 0 50px 0 30px;
+      background-color : $color-main;
+      color            : #FFFFFF;
+      cursor           : pointer;
+      border-bottom    : 1px solid #FFFFFF;
+
+      &:hover { box-shadow : inset 2px 0 0 #FFFFFF }
+
+      &.open { border-bottom : none }
+
+      &.open > .group-toggle i { @include vendor("transform", "rotate(90deg)") }
+
+      .group-title {
+        @include font(400, $font-body);
+        @include vendor("flex", "1");
+        line-height : 1;
+      }
+
+      .group-toggle {
+        @include flex-static-size(48px);
+
+        i {
+          padding : 12px;
+          @include vendor("transition", ("transform 0.3s ease"));
+        }
+
+      }
+
+    }
+
+    .layer-group-content { display : none }
+
+    .layer {
+      width            : 100%;
+      height           : 52px;
+      @include flex-display(columns);
+      @include vendor("align-items", "center");
+      padding          : 0 50px 0 30px;
+      background-color : $color-main-light;
+      color            : #FFFFFF;
+      border-bottom    : 1px solid #FFFFFF;
+      cursor           : pointer;
+
+      &:hover { box-shadow : inset 2px 0 0 #FFFFFF }
+
+      &.single-layer { background-color : $color-main }
+
+      .layer-name {
+        @include font(400, $font-body);
+        @include vendor("flex", "1");
+        line-height : 1;
+      }
+
+      .layer-visibility {
+        @include flex-static-size(48px);
+
+        i { padding : 12px }
+
+      }
+
+    }
+
+  }
+
+}
