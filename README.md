@@ -5,7 +5,7 @@ A responsive and interactive WebGIS built to show the data regarding **project M
 It is compliant to [OGC standards](https://www.opengeospatial.org/standards) and it retrieves the data from
 [GeoServer](http://geoserver.org/) through a series of *WMS* calls. 
 
-<img src="https://github.com/epessina/mhyconos-webgis/blob/master/screens/webgis.png" width="800" alt="Demo">
+<img src="https://github.com/epessina/mhyconos-webgis/blob/master/screen/webgis.png" width="800" alt="Demo">
 
 
 ### Features
