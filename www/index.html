@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
 
     <!-- Material icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="styles/index.css" type="text/css">
@@ -23,7 +23,85 @@
 
 </head>
 
-<body style="background-color: #eeeeee">
+<body>
+
+
+<div style="display: none" id="metadata-window">
+
+    <div class="metadata-top-bar">
+
+        <div class="metadata-tile">Streams wet areas</div>
+
+        <div class="metadata-close"><i class="material-icons">close</i></div>
+
+    </div>
+
+    <div class="metadata-body">
+
+        <div class="metadata-description">
+            This layer contains areas which contain water and are part of stream beds. Those areas are continuous and
+            fictitiously closed by an intersection with another body of water.
+        </div>
+
+        <div class="metadata-legend">
+
+            <div class="metadata-legend-title">Legend</div>
+
+            <img src="images/legends/area_bagnata_corso_acqua.png" alt="legend">
+
+        </div>
+
+        <div class="metadata-info">
+
+            <div class="metadata-info-title">Information</div>
+
+            <div class="metadata-info-wrapper">
+
+                <div class="info-name">Download</div>
+
+                <div class="info-content">
+
+                    <a href="http://www.geoportale.regione.lombardia.it/en/metadati?p_p_id=PublishedMetadata_WAR_geoportalemetadataportlet&p_p_lifecycle=0&p_p_state=maximized&p_p_state=view&_PublishedMetadata_WAR_geoportalemetadataportlet_view=editPublishedMetadata&_PublishedMetadata_WAR_geoportalemetadataportlet_uuid=%7B1CE0E71B-6451-4B5D-8E4D-BC0FF6E0A46F%7D&_PublishedMetadata_WAR_geoportalemetadataportlet_editType=view&_PublishedMetadata_WAR_geoportalemetadataportlet_fromAsset=true&rid=local"
+                       target="_blank">Download link</a>
+
+                </div>
+
+            </div>
+
+            <div class="metadata-info-wrapper">
+
+                <div class="info-name">Collection date</div>
+
+                <div class="info-content">2008</div>
+
+            </div>
+
+            <div class="metadata-info-wrapper">
+
+                <div class="info-name">Attribution</div>
+
+                <div class="info-content">Regione Lombardia</div>
+
+            </div>
+
+            <div class="metadata-info-wrapper">
+
+                <div class="info-name">Licence</div>
+
+                <div class="info-content">
+
+                    <a href="https://www.dati.gov.it/content/italian-open-data-license-v20"
+                       target="_blank">IODL 2.0</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <div style="display: none" id="layers-trigger" class="menu-icon"><i class="material-icons">layers</i></div>
@@ -32,8 +110,8 @@
 
     <div class="layers-panel-header">
 
-        <div class="panel-title">Layers</div>
-        <div id="layers-panel-close" class="close" ><i class="material-icons">close</i></div>
+        <div class="layers-panel-title">Layers</div>
+        <div id="layers-panel-close" class="layers-panel-close"><i class="material-icons">close</i></div>
 
     </div>
 
@@ -53,15 +131,23 @@
 
                 <div class="layer-name">Buildings</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
-            <div class="layer" data-layer="localita_abitata" data-loaded="false">
+            <div class="layer" data-layer="localita_abitata" data-maxres="19.3" data-loaded="false">
 
                 <div class="layer-name">Populated areas</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -69,7 +155,11 @@
 
                 <div class="layer-name">Spatial locations</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -90,7 +180,11 @@
 
                 <div class="layer-name">Road elements</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -98,7 +192,11 @@
 
                 <div class="layer-name">Vehicular circulation areas</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -106,7 +204,11 @@
 
                 <div class="layer-name">Paths</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -123,35 +225,51 @@
 
         <div class="layer-group-content" data-group="structures">
 
-            <div class="layer" data-layer="specchio_acqua" data-loaded="false">
+            <div class="layer" data-layer="specchio_acqua" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Water bodies</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
-            <div class="layer" data-layer="invaso_artificiale" data-loaded="false">
+            <div class="layer" data-layer="invaso_artificiale" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Artificial lake</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
-            <div class="layer" data-layer="area_bagnata_corso_acqua" data-loaded="false">
+            <div class="layer" data-layer="area_bagnata_corso_acqua" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Streams wet areas</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
-            <div class="layer" data-layer="bacini_idrografici" data-loaded="false">
+            <div class="layer" data-layer="bacini_idrografici" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Drainage basins</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -163,7 +281,11 @@
 
             <div class="layer-name">Contour map</div>
 
-            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+            <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+            <div class="layer-visibility layer-icon" data-visible="false">
+                <i class="material-icons">visibility_off</i>
+            </div>
 
         </div>
 
@@ -182,7 +304,11 @@
 
                 <div class="layer-name">Historic points</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -190,7 +316,11 @@
 
                 <div class="layer-name">Polygonal landslides</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -198,7 +328,11 @@
 
                 <div class="layer-name">Linear landslides</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -206,7 +340,11 @@
 
                 <div class="layer-name">Widespread landslides areas</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -214,21 +352,29 @@
 
 
         <!-- Val Tartano -->
-        <div class="layer single-layer" data-layer="val_tartano" data-loaded="true">
+        <div class="layer single-layer" data-layer="val_tartano" data-maxres="0" data-loaded="true">
 
             <div class="layer-name">Val Tartano</div>
 
-            <div class="layer-visibility" data-visible="true"><i class="material-icons">visibility</i></div>
+            <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+            <div class="layer-visibility layer-icon" data-visible="true">
+                <i class="material-icons">visibility</i>
+            </div>
 
         </div>
 
 
         <!-- Municipalities -->
-        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+        <div class="layer single-layer" data-layer="comuni" data-maxres="0" data-loaded="false">
 
             <div class="layer-name">Municipalities</div>
 
-            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+            <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+            <div class="layer-visibility layer-icon" data-visible="false">
+                <i class="material-icons">visibility_off</i>
+            </div>
 
         </div>
 
@@ -238,7 +384,11 @@
 
             <div class="layer-name">Land use and cover</div>
 
-            <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+            <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+            <div class="layer-visibility layer-icon" data-visible="false">
+                <i class="material-icons">visibility_off</i>
+            </div>
 
         </div>
 
@@ -257,7 +407,11 @@
 
                 <div class="layer-name">Fault lines</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -265,7 +419,60 @@
 
                 <div class="layer-name">Geology</div>
 
-                <div class="layer-visibility" data-visible="false"><i class="material-icons">visibility_off</i></div>
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DTM group -->
+        <div class="layer-group-header" data-group="dtm">
+
+            <div class="group-title">Terrain models</div>
+            <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
+
+        </div>
+
+        <div class="layer-group-content" data-group="dtm">
+
+            <div class="layer" data-layer="dtm" data-loaded="false">
+
+                <div class="layer-name">DTM</div>
+
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
+
+            </div>
+
+            <div class="layer" data-layer="hillshade" data-loaded="false">
+
+                <div class="layer-name">Hillshade</div>
+
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
+
+            </div>
+
+            <div class="layer" data-layer="slope" data-loaded="false">
+
+                <div class="layer-name">Slope</div>
+
+                <div class="layer-info layer-icon"><i class="material-icons-outlined">info</i></div>
+
+                <div class="layer-visibility layer-icon" data-visible="false">
+                    <i class="material-icons">visibility_off</i>
+                </div>
 
             </div>
 
@@ -277,72 +484,48 @@
 </div>
 
 
-<div style="display: none" id="basemaps-trigger" class="menu-icon"><i class="material-icons">language</i></div>
+<!-- Basemaps -->
+<div id="basemaps">
 
-<div id="basemaps-menu">
+    <!-- Trigger -->
+    <div id="basemaps-trigger" class="basemap-wrapper">
 
-    <div class="basemaps-wrapper">
+        <div class="basemap-name">Basemap</div>
 
-        <label class="basemap-label">
+    </div>
 
-            <input class="basemap-input"
-                   type="radio"
-                   name="basemaps"
-                   value="osm"
-                   checked/>
+    <!-- OpenStreetMaps -->
+    <div id="basemap-default" class="basemap-wrapper basemap-option basemap-selected">
 
-            <div class="basemap-preview">
+        <div class="basemap-name">Default</div>
 
-                <div class="basemap-image"></div>
+    </div>
 
-                <div class="basemap-name">OSM</div>
+    <!-- Bing aerial -->
+    <div id="basemap-aerial" class="basemap-wrapper basemap-option">
 
-            </div>
+        <div class="basemap-name">Aerial</div>
 
-        </label>
+    </div>
 
-        <label class="basemap-label">
+    <!-- Bing aerial with labels -->
+    <div id="basemap-labels" class="basemap-wrapper basemap-option">
 
-            <input class="basemap-input"
-                   type="radio"
-                   name="basemaps"
-                   value="aerial"/>
+        <div class="basemap-name">Labels</div>
 
-            <div class="basemap-preview">
+    </div>
 
-                <div class="basemap-image"></div>
+    <!-- No basemaps -->
+    <div id="basemap-none" class="basemap-wrapper basemap-option">
 
-                <div class="basemap-name">Bing Aerial</div>
-
-            </div>
-
-        </label>
-
-        <label class="basemap-label">
-
-            <input class="basemap-input"
-                   type="radio"
-                   name="basemaps"
-                   value="aerialLabel"/>
-
-            <div class="basemap-preview">
-
-                <div class="basemap-image"></div>
-
-                <div class="basemap-name">Bing Aerial with labels</div>
-
-            </div>
-
-        </label>
+        <div class="basemap-name">None</div>
 
     </div>
 
 </div>
 
 
-<div id="mouse-position"></div>
-
-
+<!-- Map view -->
 <div id="map"></div>
 
 

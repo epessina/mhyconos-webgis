@@ -18,11 +18,12 @@ class App {
 
         this.initUi();
 
-        this._layers = [];
+        this._basemaps = [];
+        this._overlays = [];
 
-        this.loadBasemaps();
-
-        this.initMap();
+        // this.loadBasemaps();
+        //
+        // this.initMap();
 
     }
 
@@ -34,14 +35,55 @@ class App {
         const $layersPanel = $("#layers-panel");
 
 
-        $("#basemaps-trigger").click(() => $("#basemaps-menu").toggleClass("open"));
+        const basemaps = {
+            default: "images/basemaps/default.png",
+            aerial : "images/basemaps/aerial.png",
+            labels : "images/basemaps/labels.png",
+        };
 
-        $("input[name='basemaps']").on("change", function () {
+        $.each(basemaps, (k, v) => new Image().src = v);
 
-            for (let i = 0; i < self._layers.length; i++) {
+        const $baseMapOptions = $(".basemap-option"),
+              $baseMapTrigger = $("#basemaps-trigger");
 
-                self._layers[i].setVisible(self._layers[i].get("title") === $(this).val());
+        const closeBaseMaps = () => $baseMapOptions.each(function () {
 
+            $(this).css("right", 16);
+
+            $baseMapTrigger.removeClass("open");
+
+        });
+
+        $baseMapTrigger.click(function () {
+
+            if ($(this).hasClass("open")) closeBaseMaps();
+
+            else {
+
+                $(".basemap-option").each(function (i) { $(this).css("right", 116 + 100 * i) });
+
+                $(this).addClass("open");
+
+            }
+
+        });
+
+        $baseMapOptions.click(function () {
+
+            closeBaseMaps();
+
+            if ($(this).hasClass("basemap-selected")) return;
+
+            $(".basemap-option").each(function () { $(this).removeClass("basemap-selected") });
+
+            $(this).addClass("basemap-selected");
+
+            let bgName = $(this).attr("id").slice(8);
+
+            $baseMapTrigger.css("background-image", () => bgName === "none" ? "none" : `url(${basemaps[bgName]})`);
+
+            for (let i = 0; i < self._basemaps.length; i++) {
+                self._basemaps[i].setVisible(self._basemaps[i].get("title") === bgName);
             }
 
         });
@@ -51,15 +93,21 @@ class App {
 
         $("#layers-panel-close").click(() => $layersPanel.removeClass("open"));
 
+
         $(".layer").click(function () {
 
             if ($(this).attr("data-loaded") === "false") {
 
                 console.log(`Loading ${$(this).attr("data-layer")}...`);
 
-                let layer = self.loadWMS($(this).attr("data-layer"), $(this).attr("data-layer"));
+                let layer = self.loadWMS(
+                    $(this).attr("data-layer"),
+                    $(this).attr("data-layer"),
+                    2,
+                    parseFloat($(this).attr("data-maxres"))
+                );
 
-                self._layers.push(layer);
+                self._basemaps.push(layer);
 
                 self._map.addLayer(layer);
 
@@ -67,18 +115,18 @@ class App {
 
                 $(this).attr("data-visible", "true");
 
-                $(this).find("i").html("visibility");
+                $(this).find(".layer-visibility i").html("visibility");
 
                 return;
 
             }
 
 
-            for (let i = 0; i < self._layers.length; i++) {
+            for (let i = 0; i < self._basemaps.length; i++) {
 
-                if (self._layers[i].get("title") === $(this).attr("data-layer")) {
+                if (self._basemaps[i].get("title") === $(this).attr("data-layer")) {
 
-                    self._layers[i].setVisible($(this).attr("data-visible") === "false");
+                    self._basemaps[i].setVisible($(this).attr("data-visible") === "false");
 
                     break;
 
@@ -88,7 +136,7 @@ class App {
 
             $(this).attr("data-visible", ($(this).attr("data-visible") === "false").toString());
 
-            $(this).find("i").html(() => $(this).attr("data-visible") === "false" ? "visibility_off" : "visibility");
+            $(this).find(".layer-visibility i").html(() => $(this).attr("data-visible") === "false" ? "visibility_off" : "visibility");
 
         });
 
@@ -113,28 +161,17 @@ class App {
 
     initMap() {
 
-        let mousePositionControl = new ol.control.MousePosition({
-            coordinateFormat: ol.coordinate.createStringXY(4),
-            projection      : "EPSG:4326",
-            className       : "custom-mouse-position",
-            target          : document.getElementById("mouse-position"),
-            undefinedHTML   : '&nbsp;'
-        });
+        let controls = ol.control.defaults().extend([new ol.control.ScaleLine()]);
 
-        let scaleBarControl = new ol.control.ScaleLine({ target: document.getElementById("scale-bar") });
-
-
-        let controls = ol.control.defaults().extend([
-            mousePositionControl,
-            new ol.control.ScaleLine()
-        ]);
-
-        this._layers.push(this.loadWMS("val_tartano", "val_tartano", 1));
+        this._overlays.push(this.loadWMS("val_tartano", "val_tartano", 1));
 
         this._map = new ol.Map({
             controls: controls,
             target  : "map",
-            layers  : this._layers,
+            layers  : [
+                new ol.layer.Group({ title: "basemaps", layers: this._basemaps }),
+                new ol.layer.Group({ title: "overlays", layers: this._overlays })
+            ],
             view    : new ol.View({ center: ol.proj.fromLonLat(App.defaultCoords), zoom: App.defaultZoom })
         });
 
@@ -143,16 +180,16 @@ class App {
 
     loadBasemaps() {
 
-        this._layers.push(
+        this._basemaps.push(
             new ol.layer.Tile({
-                title  : "osm",
+                title  : "default",
                 type   : "base",
                 visible: true,
                 source : new ol.source.OSM()
             })
         );
 
-        this._layers.push(
+        this._basemaps.push(
             new ol.layer.Tile({
                 title  : "aerial",
                 type   : "base",
@@ -161,9 +198,9 @@ class App {
             })
         );
 
-        this._layers.push(
+        this._basemaps.push(
             new ol.layer.Tile({
-                title  : "aerialLabel",
+                title  : "labels",
                 type   : "base",
                 visible: false,
                 source : new ol.source.BingMaps({ key: settings.bingKey, imagerySet: "AerialWithLabels" })
@@ -173,28 +210,44 @@ class App {
     }
 
 
-    loadWMS(title, layer, zIndex = 0, opacity = 1, visible = true, minRes, maxRes) {
+    /**
+     * Loads an image through a WMS request to GeoServer.
+     *
+     * @param {String} title - The title to assign to the image.
+     * @param {String} layerName - The name of the layer to load.
+     * @param {Number} [zIndex=0] - The z-index value to assign to the layer.
+     * @param {number} [maxRes] - The maximum resolution (exclusive) below which this layer will be visible.
+     * @returns {ol.layer.Image} The rendered image.
+     */
+    loadWMS(title, layerName, zIndex = 0, maxRes) {
 
+        // Configure the WMS request
         const source = new ol.source.ImageWMS({
             url        : settings.wmsUrl,
-            params     : { "LAYERS": `mhyconos:${layer}` },
+            params     : { "LAYERS": `mhyconos:${layerName}` },
             serverType : "geoserver",
             crossOrigin: "Anonymous"
         });
 
-        const l = new ol.layer.Image({
+        // Create the image
+        const layer = new ol.layer.Image({
             title        : title,
             source       : source,
-            opacity      : opacity,
-            minResolution: minRes,
+            opacity      : 1,
+            minResolution: 0,
             maxResolution: maxRes,
-            visible      : visible
+            visible      : true
         });
 
-        l.setZIndex(zIndex);
+        // Set the z-index to the image
+        layer.setZIndex(zIndex);
 
-        return l;
+        // Return the image
+        return layer;
 
     }
+
+
+    getZoomLevel() { return Math.log2(156543.03390625) - Math.log2(this._map.getView().getResolution()) }
 
 }

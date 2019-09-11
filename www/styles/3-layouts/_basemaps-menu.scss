@@ -1,0 +1,60 @@
+$right-close     : 16px;
+
+.basemap-wrapper {
+  width               : 96px;
+  height              : 64px;
+  position            : absolute;
+  top                 : 50px;
+  border              : 3px solid #FFFFFF;
+  cursor              : pointer;
+  z-index             : 1;
+  background          : #FFFFFF;
+  @include vendor("transition", ("right 0.5s ease"));
+  overflow            : hidden;
+  background-position : center center !important;
+  background-repeat   : no-repeat !important;
+  background-size     : 100% auto !important;
+
+  &.basemap-selected { border : 3px solid $color-main-light }
+
+  &:hover { border : 3px solid $color-main-light }
+
+  .basemap-name {
+    background : #FFFFFF;
+    color      : #000000;
+    @include font(400, 14px);
+    text-align : center;
+    margin     : 3px;
+    padding    : 1px;
+  }
+
+  img { width : 100% }
+
+}
+
+
+#basemaps-trigger {
+  right            : $right-close;
+  z-index          : 2;
+  background-image : url("../images/basemaps/default.png");
+
+  &:hover { border : 3px solid #FFFFFF }
+
+  .basemap-name {
+    background : #000000;
+    color      : #FFFFFF;
+  }
+
+}
+
+
+.basemap-wrapper { right : $right-close }
+
+#basemap-default { background-image : url("../images/basemaps/default.png") }
+
+#basemap-aerial { background-image : url("../images/basemaps/aerial.png") }
+
+#basemap-labels { background-image : url("../images/basemaps/labels.png") }
+
+
+

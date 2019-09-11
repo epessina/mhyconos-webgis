@@ -1,0 +1,24 @@
+$bottom-strip-height : 30px;
+
+#bottom-strip {
+  width      : 100%;
+  height     : $bottom-strip-height;
+  position   : absolute;
+  bottom     : 0;
+  left       : 0;
+  right      : 0;
+  background : rgba(214, 214, 214, 0.9);
+  color      : #333333;
+  z-index    : 3;
+
+  #attribution {
+    width      : 200px;
+    position   : absolute;
+    top        : 0;
+    right      : 0;
+
+    .ol-attribution { background : transparent }
+
+  }
+
+}

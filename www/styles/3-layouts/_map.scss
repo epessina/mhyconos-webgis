@@ -1,33 +1,8 @@
-#map {
-  width : 100%;
-
-  .ol-attribution {display : none}
-
-}
-
-
-#mouse-position {
-  width            : 100px;
-  height           : 50px;
-  position         : absolute;
-  bottom           : 0;
-  left             : 0;
-  background-color : white;
-  z-index          : 1;
-}
-
-
-#scale-bar {
-  width    : 75px;
-  position : absolute;
-  bottom   : 6px;
-  right    : 0;
-  z-index  : 1;
-}
+#map { width : 100% }
 
 
 .ol-scale-line {
-  bottom     : 10px;
+  bottom     : 28px;
   right      : 16px;
   left       : auto;
   background : transparentize($color-main, 0.3);
@@ -36,7 +11,7 @@
 
 .ol-zoom {
   top    : auto;
-  bottom : 38px;
+  bottom : 56px;
   right  : 16px;
   left   : auto;
 
