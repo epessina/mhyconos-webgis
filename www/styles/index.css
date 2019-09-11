@@ -598,6 +598,7 @@ p {
   border-bottom: 1px solid #EBEBEB;
   padding-left: 16px;
   border-radius: 5px 5px 0 0;
+  cursor: move;
 }
 #metadata-window .metadata-top-bar .metadata-tile {
   font: 400 18px "Roboto";

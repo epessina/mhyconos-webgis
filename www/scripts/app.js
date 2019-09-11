@@ -227,6 +227,28 @@ class App {
 
         });
 
+
+        // Add the dragging functionality to the metadata window
+        $("#metadata-window").draggable({
+            handle     : ".metadata-top-bar",
+            containment: "document",
+            scroll     : false
+        });
+
+        // Fired when the user clicks on the close button of the metadata window
+        $(".metadata-close").click(() => {
+
+            $("#metadata-window").hide();
+
+        });
+
+        // Fired when the user clicks on the info icon of a layer
+        $(".layer-info").click(function () {
+
+            $("#metadata-window").show();
+
+        });
+
     }
 
 
