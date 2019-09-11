@@ -245,27 +245,46 @@ p {
   background: #067C98;
 }
 
-.menu-icon {
-  width: 48px;
-  height: 48px;
+#layers-panel-trigger {
+  width: 50px;
+  height: 40px;
+  background: #01A0C4;
   position: absolute;
-  background-color: #01A0C4;
-  color: #FFFFFF;
-  cursor: pointer;
-  border-radius: 8px;
+  top: 50px;
+  left: 0;
+  color: white;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
   z-index: 1;
-  box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  -moz-transition: width 0.2s ease;
+  -webkit-transition: width 0.2s ease;
+  -ms-transition: width 0.2s ease;
+  transition: width 0.2s ease;
 }
-.menu-icon:hover {
-  background-color: #067C98;
+#layers-panel-trigger:hover {
+  width: 70px;
 }
-.menu-icon i {
-  padding: 12px;
+#layers-panel-trigger:hover i {
+  margin-left: 20px;
 }
-
-#layers-trigger {
-  top: 30px;
-  right: 70px;
+#layers-panel-trigger i {
+  margin-left: 5px;
+  -moz-transition: margin-left 0.2s ease;
+  -webkit-transition: margin-left 0.2s ease;
+  -ms-transition: margin-left 0.2s ease;
+  transition: margin-left 0.2s ease;
 }
 
 #layers-panel {
@@ -277,10 +296,10 @@ p {
   z-index: 2;
   background-color: #01A0C4;
   box-shadow: 3px 0 5px 0 rgba(0, 0, 0, 0.36);
-  -moz-transform: translateX(-400px);
-  -webkit-transform: translateX(-400px);
-  -ms-transform: translateX(-400px);
-  transform: translateX(-400px);
+  -moz-transform: translateX(-405px);
+  -webkit-transform: translateX(-405px);
+  -ms-transform: translateX(-405px);
+  transform: translateX(-405px);
   -moz-transition: -moz-transform 250ms ease-in-out;
   -webkit-transition: -webkit-transform 250ms ease-in-out;
   -ms-transition: -ms-transform 250ms ease-in-out;
@@ -342,6 +361,10 @@ p {
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
   cursor: pointer;
+  border-radius: 50%;
+}
+#layers-panel .layers-panel-header .layers-panel-close:hover {
+  background: rgba(255, 255, 255, 0.11);
 }
 #layers-panel .layers-panel-header .layers-panel-close i {
   padding: 12px;

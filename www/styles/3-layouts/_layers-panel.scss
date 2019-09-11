@@ -1,24 +1,33 @@
-.menu-icon {
-  width            : 48px;
-  height           : 48px;
-  position         : absolute;
-  background-color : $color-main;
-  color            : #FFFFFF;
-  cursor           : pointer;
-  border-radius    : 8px;
-  z-index          : 1;
-  box-sizing       : border-box;
+#layers-panel-trigger {
+  width         : 50px;
+  height        : 40px;
+  background    : $color-main;
+  position      : absolute;
+  top           : 50px;
+  left          : 0;
+  color         : white;
+  @include vendor("display", "flex");
+  @include vendor("align-items", "center");
+  @include vendor("justify-content", "center");
+  z-index       : 1;
+  border-radius : 0 5px 5px 0;
+  cursor        : pointer;
+  @include vendor("transition", ("width 0.2s ease"));
 
-  &:hover { background-color : $color-main-dark}
+  &:hover {
+    width : 70px;
 
-  i { padding : 12px }
+    i { margin-left : 20px }
+
+  }
+
+  i {
+    margin-left : 5px;
+    @include vendor("transition", ("margin-left 0.2s ease"));
+  }
 
 }
 
-#layers-trigger {
-  top   : 30px;
-  right : 70px;
-}
 
 #layers-panel {
   width            : 400px;
@@ -29,7 +38,7 @@
   z-index          : 2;
   background-color : $color-main;
   box-shadow       : 3px 0 5px 0 rgba(0, 0, 0, 0.36);
-  @include vendor("transform", "translateX(-400px)");
+  @include vendor("transform", "translateX(-405px)");
   @include vendor("transition", ("transform 250ms ease-in-out"));
   overflow-y       : auto;
 
@@ -52,7 +61,10 @@
 
     .layers-panel-close {
       @include flex-static-size(48px);
-      cursor : pointer;
+      cursor        : pointer;
+      border-radius : 50%;
+
+      &:hover { background : rgba(255, 255, 255, 0.11) }
 
       i {
         padding : 12px;
@@ -138,9 +150,7 @@
         cursor        : pointer;
         border-radius : 50%;
 
-        &:hover {
-          background : rgba(255, 255, 255, 0.2);
-        }
+        &:hover { background : rgba(255, 255, 255, 0.2) }
 
         i { padding : 12px }
       }

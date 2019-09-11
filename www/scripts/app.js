@@ -31,11 +31,11 @@ class App {
         this._basemaps = [];
         this._overlays = [];
 
-        // Load the basemaps
-        this.loadBasemaps();
-
-        // Initialize the map
-        this.initMap();
+        // // Load the basemaps
+        // this.loadBasemaps();
+        //
+        // // Initialize the map
+        // this.initMap();
 
     }
 
@@ -128,10 +128,13 @@ class App {
         });
 
 
+        // Cache the layers panel
         const $layersPanel = $("#layers-panel");
 
-        $("#layers-trigger").click(() => $layersPanel.addClass("open"));
+        // When the user clicks on the trigger, open the layers panel
+        $("#layers-panel-trigger").click(() => $layersPanel.addClass("open"));
 
+        // When the user clicks on the close button, close the layers panel
         $("#layers-panel-close").click(() => $layersPanel.removeClass("open"));
 
 
