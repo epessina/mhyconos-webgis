@@ -7,151 +7,219 @@ $(() => app = new App());
 
 class App {
 
+    /** The default coordinates of the center of the map. */
     static get defaultCoords() { return [9.679417, 46.106759] }
 
+    /** The default zoom of the map. */
     static get defaultZoom() { return 13 }
 
 
+    /**
+     * Initializes the map and the UI.
+     *
+     * @constructor
+     */
     constructor() {
 
+        // Set the height of the map to match the one of the screen
         $("#map").height($(window).height());
 
+        // Initialize the user interface
         this.initUi();
 
+        // Initialize the layer containers
         this._basemaps = [];
         this._overlays = [];
 
-        // this.loadBasemaps();
-        //
-        // this.initMap();
+        // Load the basemaps
+        this.loadBasemaps();
+
+        // Initialize the map
+        this.initMap();
 
     }
 
 
+    /** Initializes all user interface elements. */
     initUi() {
 
+        // Save the reference to the class
         const self = this;
 
-        const $layersPanel = $("#layers-panel");
 
-
+        // Save the urls of each basemap thumbnail
         const basemaps = {
             default: "images/basemaps/default.png",
             aerial : "images/basemaps/aerial.png",
             labels : "images/basemaps/labels.png",
         };
 
+        // Cache the basemaps thumbnails
         $.each(basemaps, (k, v) => new Image().src = v);
 
+        // Cache the DOM elements
         const $baseMapOptions = $(".basemap-option"),
               $baseMapTrigger = $("#basemaps-trigger");
 
-        const closeBaseMaps = () => $baseMapOptions.each(function () {
+        // Utility function to close the basemaps selector
+        const closeBaseMaps = () => {
 
-            $(this).css("right", 16);
+            // For each basemaps possibility
+            $baseMapOptions.each(function () {
 
-            $baseMapTrigger.removeClass("open");
+                // Hide the thumbnail
+                $(this).css("right", 16);
 
-        });
+                // Close the menu
+                $baseMapTrigger.removeClass("open");
 
+            });
+
+        };
+
+        // Fired when the user clicks on the basemap trigger
         $baseMapTrigger.click(function () {
 
+            // If the basemaps menu is open, close it
             if ($(this).hasClass("open")) closeBaseMaps();
 
+            // Else
             else {
 
+                // Show the thumbnails
                 $(".basemap-option").each(function (i) { $(this).css("right", 116 + 100 * i) });
 
+                // Open the menu
                 $(this).addClass("open");
 
             }
 
         });
 
+        // Fired when the user clicks on a basemap thumbnail
         $baseMapOptions.click(function () {
 
+            // Close the menu
             closeBaseMaps();
 
+            // If the basemap selected is already active, return
             if ($(this).hasClass("basemap-selected")) return;
 
+            // Remove the selection from all the basemaps
             $(".basemap-option").each(function () { $(this).removeClass("basemap-selected") });
 
+            // Select the selected basemaps
             $(this).addClass("basemap-selected");
 
+            // Save the name of the selected basemap
             let bgName = $(this).attr("id").slice(8);
 
+            // Set the background of the trigger
             $baseMapTrigger.css("background-image", () => bgName === "none" ? "none" : `url(${basemaps[bgName]})`);
 
+            // For each beasemap layer
             for (let i = 0; i < self._basemaps.length; i++) {
+
+                // Hide or show it accordingly to the selection
                 self._basemaps[i].setVisible(self._basemaps[i].get("title") === bgName);
+
             }
 
         });
 
+
+        const $layersPanel = $("#layers-panel");
 
         $("#layers-trigger").click(() => $layersPanel.addClass("open"));
 
         $("#layers-panel-close").click(() => $layersPanel.removeClass("open"));
 
 
-        $(".layer").click(function () {
+        // Save the number of layers
+        const layerNumber = $(".layer").length;
 
-            if ($(this).attr("data-loaded") === "false") {
+        // Fired when the user clicks on the "eye" icon of a layer
+        $(".layer-visibility").click(function () {
 
-                console.log(`Loading ${$(this).attr("data-layer")}...`);
+            // Save the layer object
+            const $layer = $(this).parent();
 
-                let layer = self.loadWMS(
-                    $(this).attr("data-layer"),
-                    $(this).attr("data-layer"),
-                    2,
-                    parseFloat($(this).attr("data-maxres"))
+            // If the data aren't loaded yet
+            if ($layer.attr("data-loaded") === "false") {
+
+                console.log(`Loading ${$layer.attr("data-layer")}...`);
+
+                // Calculate the z-index of the layer
+                const idx = layerNumber - $(".layer").index($layer);
+
+                // Load the layer
+                const layer = self.loadWMS(
+                    $layer.attr("data-layer"),
+                    $layer.attr("data-layer"),
+                    idx,
+                    parseFloat($layer.attr("data-maxres"))
                 );
 
-                self._basemaps.push(layer);
+                // Push the layer in the overlays array
+                self._overlays.push(layer);
 
+                // Add the layer to the map
                 self._map.addLayer(layer);
 
-                $(this).attr("data-loaded", "true");
+                // Set the data as loaded
+                $layer.attr("data-loaded", "true");
 
+                // Set the data as visible
                 $(this).attr("data-visible", "true");
 
-                $(this).find(".layer-visibility i").html("visibility");
+                // Change the visibility icon
+                $(this).find("i").html("visibility");
 
+                // Return
                 return;
 
             }
 
+            // For each loaded layer
+            for (let i = 0; i < self._overlays.length; i++) {
 
-            for (let i = 0; i < self._basemaps.length; i++) {
+                // If the layer is the selected one
+                if (self._overlays[i].get("title") === $layer.attr("data-layer")) {
 
-                if (self._basemaps[i].get("title") === $(this).attr("data-layer")) {
+                    // Set the visibility of the layer
+                    self._overlays[i].setVisible($(this).attr("data-visible") === "false");
 
-                    self._basemaps[i].setVisible($(this).attr("data-visible") === "false");
-
+                    // Break the loop
                     break;
 
                 }
 
             }
 
+            // Change the visibility attribute
             $(this).attr("data-visible", ($(this).attr("data-visible") === "false").toString());
 
-            $(this).find(".layer-visibility i").html(() => $(this).attr("data-visible") === "false" ? "visibility_off" : "visibility");
+            // Change the visibility icon
+            $(this).find("i").html("visibility").html(() => $(this).attr("data-visible") === "false" ? "visibility_off" : "visibility");
 
         });
 
-
+        // Fired when the user clicks on the header of a layer group
         $(".layer-group-header").click(function () {
 
+            // Open or close the group
             $(this).toggleClass("open");
 
+            // Save the content of the group
             let $content = $(this).next(".layer-group-content");
 
+            // Slide the contend up or down
             if ($content.hasClass("open"))
                 $content.slideUp();
             else
                 $content.slideDown();
 
+            // Open or close the content
             $content.toggleClass("open");
 
         });
@@ -159,12 +227,13 @@ class App {
     }
 
 
+    /** Initializes the map. */
     initMap() {
 
+        // Create a new scale bar
         let controls = ol.control.defaults().extend([new ol.control.ScaleLine()]);
 
-        this._overlays.push(this.loadWMS("val_tartano", "val_tartano", 1));
-
+        // Create a new map
         this._map = new ol.Map({
             controls: controls,
             target  : "map",
@@ -175,20 +244,24 @@ class App {
             view    : new ol.View({ center: ol.proj.fromLonLat(App.defaultCoords), zoom: App.defaultZoom })
         });
 
+        // Load the boundaries of the Tartano basin
+        $("#tartano-visibility").trigger("click");
+
     }
 
 
+    /** Loads the basemaps. */
     loadBasemaps() {
 
-        this._basemaps.push(
-            new ol.layer.Tile({
-                title  : "default",
-                type   : "base",
-                visible: true,
-                source : new ol.source.OSM()
-            })
-        );
+        // Load the OSM basemap
+        this._basemaps.push(new ol.layer.Tile({
+            title  : "default",
+            type   : "base",
+            visible: true,
+            source : new ol.source.OSM()
+        }));
 
+        // Load the Bing aerial basemap
         this._basemaps.push(
             new ol.layer.Tile({
                 title  : "aerial",
@@ -198,6 +271,7 @@ class App {
             })
         );
 
+        // Load the Bing aerial with labels basemap
         this._basemaps.push(
             new ol.layer.Tile({
                 title  : "labels",
