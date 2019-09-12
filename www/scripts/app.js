@@ -31,11 +31,11 @@ class App {
         this._basemaps = [];
         this._overlays = [];
 
-        // // Load the basemaps
-        // this.loadBasemaps();
-        //
-        // // Initialize the map
-        // this.initMap();
+        // Load the basemaps
+        this.loadBasemaps();
+
+        // Initialize the map
+        this.initMap();
 
     }
 
@@ -117,7 +117,7 @@ class App {
             // Set the background of the trigger
             $baseMapTrigger.css("background-image", () => bgName === "none" ? "none" : `url(${basemaps[bgName]})`);
 
-            // For each beasemap layer
+            // For each basemap layer
             for (let i = 0; i < self._basemaps.length; i++) {
 
                 // Hide or show it accordingly to the selection
@@ -236,18 +236,61 @@ class App {
         });
 
         // Fired when the user clicks on the close button of the metadata window
-        $(".metadata-close").click(() => {
-
-            $("#metadata-window").hide();
-
-        });
+        $(".metadata-close").click(() => self.closeMetadataWindow());
 
         // Fired when the user clicks on the info icon of a layer
-        $(".layer-info").click(function () {
+        $(".layer-info").click(function () { self.openMetadataWindow($(this).parent(".layer")) });
 
-            $("#metadata-window").show();
+    }
 
-        });
+
+    /**
+     * Opens the layer metadata window.
+     *
+     * @param {jQuery} $layer - The DOM element correspondent to the layer.
+     */
+    openMetadataWindow($layer) {
+
+        // Set the title
+        $(".metadata-tile").html($layer.find(".layer-name").html());
+
+        // Set the legend
+        $("#metadata-legend-img").html(`<img src="images/legends/${$layer.attr("data-layer")}.png" alt="legend">`);
+
+        // Extract the metadata of the layer
+        const data = metadata[$layer.attr("data-layer")];
+
+        // Set the description
+        $(".metadata-description").html(data.description);
+
+        // Set the date
+        $("#metadata-date .info-content").html(data.date);
+
+        // Set the attribution
+        $("#metadata-attribution .info-content").html(data.attribution);
+
+        // Set the licence
+        $("#metadata-licence .info-content").html(`<a href="${metadata.licences[data.licence]}" target="_blank">${data.licence}</a>`);
+
+        // Open the window
+        $("#metadata-window").show();
+
+    }
+
+
+    /** Closes the metadata window. */
+    closeMetadataWindow() {
+
+        // Close the window
+        $("#metadata-window").hide();
+
+        // Reset the fields
+        $(".metadata-tile").html("");
+        $(".metadata-description").html("");
+        $("#metadata-legend-img").html("");
+        $("#metadata-date .info-content").html("");
+        $("#metadata-attribution .info-content").html("");
+        $("#metadata-licence .info-content").html("");
 
     }
 

@@ -12,7 +12,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     localita_abitata: {
@@ -20,7 +20,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     luogo_territoriale: {
@@ -28,7 +28,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     elementi_stradali: {
@@ -36,7 +36,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     area_circolazione_veicolare: {
@@ -44,7 +44,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     sentieri: {
@@ -60,7 +60,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     invaso_artificiale: {
@@ -68,7 +68,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     area_bagnata_corso_acqua: {
@@ -76,7 +76,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     bacini_idrografici: {
@@ -84,7 +84,7 @@ const metadata = {
         download   : "",
         date       : "2006",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     comuni: {
@@ -92,7 +92,7 @@ const metadata = {
         download   : "",
         date       : "2018",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     punti_storici: {
@@ -100,7 +100,7 @@ const metadata = {
         download   : "",
         date       : "2014",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     frane_poligonali: {
@@ -108,7 +108,7 @@ const metadata = {
         download   : "",
         date       : "2014",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     frane_lineari: {
@@ -116,7 +116,7 @@ const metadata = {
         download   : "",
         date       : "2014",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     aree_franosita_diffusa: {
@@ -124,7 +124,7 @@ const metadata = {
         download   : "",
         date       : "2014",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     val_tartano: {
@@ -132,7 +132,7 @@ const metadata = {
         download   : "",
         date       : "2017",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     dusaf: {
@@ -140,7 +140,7 @@ const metadata = {
         download   : "",
         date       : "2015",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     faglie: {
@@ -148,7 +148,7 @@ const metadata = {
         download   : "",
         date       : "1990",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     geologia: {
@@ -156,7 +156,7 @@ const metadata = {
         download   : "",
         date       : "1990",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
     isoipse: {
@@ -164,7 +164,7 @@ const metadata = {
         download   : "",
         date       : "2008",
         attribution: "Regione Lombardia",
-        licence    : "IODL 2.0"
+        licence    : "IODL"
     },
 
 };

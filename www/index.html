@@ -31,7 +31,7 @@
 
     <div class="metadata-top-bar">
 
-        <div class="metadata-tile">Streams wet areas</div>
+        <div class="metadata-tile"></div>
 
         <div class="metadata-close"><i class="material-icons">close</i></div>
 
@@ -39,16 +39,13 @@
 
     <div class="metadata-body">
 
-        <div class="metadata-description">
-            This layer contains areas which contain water and are part of stream beds. Those areas are continuous and
-            fictitiously closed by an intersection with another body of water.
-        </div>
+        <div class="metadata-description"></div>
 
         <div class="metadata-legend">
 
             <div class="metadata-legend-title">Legend</div>
 
-            <img src="images/legends/area_bagnata_corso_acqua.png" alt="legend">
+            <div id="metadata-legend-img"></div>
 
         </div>
 
@@ -56,7 +53,7 @@
 
             <div class="metadata-info-title">Information</div>
 
-            <div class="metadata-info-wrapper">
+            <div id="metadata-download" class="metadata-info-wrapper">
 
                 <div class="info-name">Download</div>
 
@@ -69,32 +66,27 @@
 
             </div>
 
-            <div class="metadata-info-wrapper">
+            <div id="metadata-date" class="metadata-info-wrapper">
 
                 <div class="info-name">Collection date</div>
 
-                <div class="info-content">2008</div>
+                <div class="info-content"></div>
 
             </div>
 
-            <div class="metadata-info-wrapper">
+            <div id="metadata-attribution" class="metadata-info-wrapper">
 
                 <div class="info-name">Attribution</div>
 
-                <div class="info-content">Regione Lombardia</div>
+                <div class="info-content"></div>
 
             </div>
 
-            <div class="metadata-info-wrapper">
+            <div id="metadata-licence" class="metadata-info-wrapper">
 
                 <div class="info-name">Licence</div>
 
-                <div class="info-content">
-
-                    <a href="https://www.dati.gov.it/content/italian-open-data-license-v20"
-                       target="_blank">IODL 2.0</a>
-
-                </div>
+                <div class="info-content"></div>
 
             </div>
 
@@ -129,7 +121,7 @@
 
         <div class="layer-group-content">
 
-            <div class="layer" data-layer="corpo_edificato" data-loaded="false">
+            <div class="layer" data-layer="corpo_edificato" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Buildings</div>
 
@@ -153,7 +145,7 @@
 
             </div>
 
-            <div class="layer" data-layer="luogo_territoriale" data-loaded="false">
+            <div class="layer" data-layer="luogo_territoriale" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Spatial locations</div>
 
@@ -178,7 +170,7 @@
 
         <div class="layer-group-content">
 
-            <div class="layer" data-layer="elementi_stradali" data-loaded="false">
+            <div class="layer" data-layer="elementi_stradali" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Road elements</div>
 
@@ -190,7 +182,7 @@
 
             </div>
 
-            <div class="layer" data-layer="area_circolazione_veicolare" data-loaded="false">
+            <div class="layer" data-layer="area_circolazione_veicolare" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Vehicular circulation areas</div>
 
@@ -202,7 +194,7 @@
 
             </div>
 
-            <div class="layer" data-layer="sentieri" data-loaded="false">
+            <div class="layer" data-layer="sentieri" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Paths</div>
 
@@ -279,7 +271,7 @@
 
 
         <!-- Contour map -->
-        <div class="layer single-layer" data-layer="isoipse" data-loaded="false">
+        <div class="layer single-layer" data-layer="isoipse" data-maxres="Infinity"  data-loaded="false">
 
             <div class="layer-name">Contour map</div>
 
@@ -302,7 +294,7 @@
 
         <div class="layer-group-content">
 
-            <div class="layer" data-layer="punti_storici" data-loaded="false">
+            <div class="layer" data-layer="punti_storici" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Historic points</div>
 
@@ -314,7 +306,7 @@
 
             </div>
 
-            <div class="layer" data-layer="frane_poligonali" data-loaded="false">
+            <div class="layer" data-layer="frane_poligonali" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Polygonal landslides</div>
 
@@ -326,7 +318,7 @@
 
             </div>
 
-            <div class="layer" data-layer="frane_lineari" data-loaded="false">
+            <div class="layer" data-layer="frane_lineari" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Linear landslides</div>
 
@@ -338,7 +330,7 @@
 
             </div>
 
-            <div class="layer" data-layer="aree_franosita_diffusa" data-loaded="false">
+            <div class="layer" data-layer="aree_franosita_diffusa" data-maxres="Infinity" data-loaded="false">
 
                 <div class="layer-name">Widespread landslides areas</div>
 
@@ -382,7 +374,7 @@
 
 
         <!-- Land use -->
-        <div class="layer single-layer" data-layer="dusaf" data-loaded="false">
+        <div class="layer single-layer" data-layer="dusaf" data-maxres="Infinity"  data-loaded="false">
 
             <div class="layer-name">Land use and cover</div>
 
@@ -405,7 +397,7 @@
 
         <div class="layer-group-content">
 
-            <div class="layer" data-layer="faglie" data-loaded="false">
+            <div class="layer" data-layer="faglie" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Fault lines</div>
 
@@ -417,7 +409,7 @@
 
             </div>
 
-            <div class="layer" data-layer="geologia" data-loaded="false">
+            <div class="layer" data-layer="geologia" data-maxres="Infinity"  data-loaded="false">
 
                 <div class="layer-name">Geology</div>
 
