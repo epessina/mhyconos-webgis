@@ -613,8 +613,12 @@ p {
   -webkit-flex: 0 0 48px;
   -ms-flex: 0 0 48px;
   flex: 0 0 48px;
-  color: #067C98;
   cursor: pointer;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+#metadata-window .metadata-top-bar .metadata-close:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 #metadata-window .metadata-top-bar .metadata-close i {
   padding: 12px;

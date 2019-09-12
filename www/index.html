@@ -27,7 +27,7 @@
 
 
 <!-- Metadata window -->
-<div id="metadata-window">
+<div style="display:none;" id="metadata-window">
 
     <div class="metadata-top-bar">
 
@@ -120,14 +120,14 @@
     <div class="layers-container">
 
         <!-- Structures group -->
-        <div class="layer-group-header" data-group="structures">
+        <div class="layer-group-header">
 
             <div class="group-title">Structures</div>
             <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
 
         </div>
 
-        <div class="layer-group-content" data-group="structures">
+        <div class="layer-group-content">
 
             <div class="layer" data-layer="corpo_edificato" data-loaded="false">
 
@@ -169,14 +169,14 @@
 
 
         <!-- Roads group -->
-        <div class="layer-group-header" data-group="structures">
+        <div class="layer-group-header">
 
             <div class="group-title">Roads</div>
             <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
 
         </div>
 
-        <div class="layer-group-content" data-group="structures">
+        <div class="layer-group-content">
 
             <div class="layer" data-layer="elementi_stradali" data-loaded="false">
 
@@ -218,14 +218,14 @@
 
 
         <!-- Water group -->
-        <div class="layer-group-header" data-group="structures">
+        <div class="layer-group-header">
 
             <div class="group-title">Water</div>
             <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
 
         </div>
 
-        <div class="layer-group-content" data-group="structures">
+        <div class="layer-group-content">
 
             <div class="layer" data-layer="specchio_acqua" data-maxres="Infinity" data-loaded="false">
 
@@ -279,7 +279,7 @@
 
 
         <!-- Contour map -->
-        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+        <div class="layer single-layer" data-layer="isoipse" data-loaded="false">
 
             <div class="layer-name">Contour map</div>
 
@@ -293,14 +293,14 @@
 
 
         <!-- Landslides collection group -->
-        <div class="layer-group-header" data-group="structures">
+        <div class="layer-group-header">
 
             <div class="group-title">Landslides collection</div>
             <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
 
         </div>
 
-        <div class="layer-group-content" data-group="structures">
+        <div class="layer-group-content">
 
             <div class="layer" data-layer="punti_storici" data-loaded="false">
 
@@ -382,7 +382,7 @@
 
 
         <!-- Land use -->
-        <div class="layer single-layer" data-layer="comuni" data-loaded="false">
+        <div class="layer single-layer" data-layer="dusaf" data-loaded="false">
 
             <div class="layer-name">Land use and cover</div>
 
@@ -396,14 +396,14 @@
 
 
         <!-- Geological map group -->
-        <div class="layer-group-header" data-group="structures">
+        <div class="layer-group-header">
 
             <div class="group-title">Geological map</div>
             <div class="group-toggle"><i class="material-icons">arrow_forward_ios</i></div>
 
         </div>
 
-        <div class="layer-group-content" data-group="structures">
+        <div class="layer-group-content">
 
             <div class="layer" data-layer="faglie" data-loaded="false">
 
@@ -540,6 +540,7 @@
 
 <!-- Main js -->
 <script type="text/javascript" src="scripts/settings.js"></script>
+<script type="text/javascript" src="scripts/metadata.js"></script>
 <script type="text/javascript" src="scripts/app.js"></script>
 
 </body>

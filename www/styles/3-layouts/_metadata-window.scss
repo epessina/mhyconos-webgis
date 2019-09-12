@@ -28,8 +28,11 @@
 
     .metadata-close {
       @include flex-static-size(48px);
-      color  : $color-main-dark;
-      cursor : pointer;
+      cursor        : pointer;
+      border-radius : 50%;
+      margin-right  : 8px;
+
+      &:hover { background : rgba(255, 255, 255, 0.1) }
 
       i {
         padding : 12px;
